@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/styleguide.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+    <script src="{% static 'main.js' %}}" defer></script>
+    <!--Dropzone js css-->
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+  </head>
+  <body>
+    <div class="desktop">
+      <img class="navbar" src="{% static 'img/navbar.png' %}" />
+      <div class="frame">
+        <div class="div">
+          <form action ="upload/" method="POST" class="dropzone dz">
+            {% csrf_token %}
+            <div class = "fallback">
+              <input name ="file" type="file" multiple/>
+            </div>
+            <div class="dz-message" data-dz-message><span>Drop file here to upload</span></div>
+          </form>
+        </div>
+        <div class="frame-3">
+          <div class="frame-4">
+            <div class="text-wrapper-2">Search results</div>
+            <img class="line" src="{% static 'img/line-1.svg' %}" />
+          </div>
+          <div class="frame-5">
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{% static 'img/media-image-02-8.svg' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{%static 'img/media-image-02-8.svg' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{% static 'img/media-image-02-8.svg' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{% static 'img/media-image-02-5.svg' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{% static 'img/media-image-02-5.svg' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{% static 'img/media-image-02-5.svg' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{% static 'img/media-image-02-2.png' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{% static 'img/media-image-02-2.png' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+            <div class="frame-6">
+              <div class="media-image-wrapper"><img class="img" src="{% static 'img/media-image-02-2.png' %}" /></div>
+              <div class="text-wrapper-3">Brand:</div>
+              <div class="text-wrapper-3">Material:</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
