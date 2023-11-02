@@ -2,7 +2,7 @@
 # CS406.O11
 - Tên môn học : Xử lý ảnh và ứng dụng
 - Lớp : CS406.O11
-## Giảng viên: Cáp Phạm Đình Thắng 
+# Giảng viên: Cáp Phạm Đình Thắng 
 # Nhóm sinh viên thực hiện:
 ## Tên Nhóm
 
