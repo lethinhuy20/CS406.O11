@@ -1,0 +1,76 @@
+{% extends "app/base.html" %} {% load static %} {%block main_content %}
+<div class="div">
+  <div class="group">
+    <form
+      action="{% url 'upload' %}"
+      method="POST"
+      enctype="multipart/form-data"
+      class="dropzone dz"
+      id="upload-image"
+    >
+      {% csrf_token %}
+      <div class="fallback">
+        <input name="file" type="file" multiple />
+      </div>
+      {% if query_image %}
+      <img class="query-image" src="{{query_image.url}}" alt="query image" />
+      <div
+        class="dz-message"
+        style="font-size: 12px; line-height: 10px"
+        data-dz-message
+      >
+        <span>Drop file here to upload another file</span>
+      </div>
+      {% else %}
+      <div class="dz-message" data-dz-message>
+        <span>Drop file here to upload</span>
+      </div>
+      {% endif %}
+    </form>
+  </div>
+  {% comment %}
+  <div class="frame-2">
+    <a class="button-btn-primary" href="{% url 'result' 1 %}"
+      ><div class="btn-text">Search</div></a
+    >
+  </div>
+  {% endcomment %}
+</div>
+{% if query_image %}
+<div class="frame-3">
+  <div class="frame-4">
+    <div class="text-wrapper-2">Search results</div>
+    <img class="line" src="{% static 'img/line-1.svg' %}" />
+  </div>
+  <div class="frame-5">
+    {% if query_image %} {% for i in "123456789" %}
+    <div class="frame-6">
+      <div class="media-image-wrapper">
+        <img class="img" src="{%static 'img/products/somitrang.jpeg' %}" />
+      </div>
+      <div class="text-wrapper-3">Brand:</div>
+      <div class="text-wrapper-3">Material:</div>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+{% endif %}
+<script>
+  Dropzone.options.uploadImage = {
+    maxFiles: 1,
+    acceptedFiles: "image/*",
+    thumbnailWidth: null,
+    thumbnailHeight: null,
+    init: function () {
+      this.on("maxfilesexceeded", function (file) {
+        this.removeAllFiles();
+        this.addFile(file);
+      });
+
+      this.on("success", function (file, response) {
+        window.location.href = JSON.parse(file.xhr.response).url;
+      });
+    },
+  };
+</script>
+{%endblock main_content%}
