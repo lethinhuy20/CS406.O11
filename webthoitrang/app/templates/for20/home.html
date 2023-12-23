@@ -1,0 +1,54 @@
+{% extends "for20/base.html" %}
+{% load static %}
+{%block main_content %}
+<div class="div">
+    <form action ="/upload/" method="POST" class="dropzone dz" id="upload-image">
+        {% csrf_token %}
+        <div class = "fallback">
+            <input name ="file" type="file" multiple/>
+        </div>
+        <div class="dz-message" data-dz-message><span>Drop file here to upload</span></div>
+    </form>
+    {% comment %} <div class="frame-2">
+        <a class="button-btn-primary" href="/result"><div class="btn-text">Search</div></a>
+    </div> {% endcomment %}
+    {% comment %} <form action ="result/" method="POST" id="showResult">
+      {% csrf_token %}
+    </form> {% endcomment %}
+</div>
+
+<script>
+    // Dropzone Configuration
+    Dropzone.options.uploadImage = {
+      init: function() {
+        var myDropzone = this;
+        // Remove all files except the last one when a new file is added
+        myDropzone.on("addedfile", function(file) {
+          if (myDropzone.files.length > 1) {
+            myDropzone.removeFile(myDropzone.files[0]);
+          }
+        });
+
+        // Update Dropzone dimensions based on the uploaded image's aspect ratio
+        myDropzone.on("thumbnail", function(file) {
+          var aspectRatio = file.width / file.height;
+          var previewElement = file.previewElement.querySelector(".dz-image");
+          
+          if (aspectRatio > 1) {
+            previewElement.style.width = "100%";
+            previewElement.style.height = "auto";
+          } else {
+            previewElement.style.width = "auto";
+            previewElement.style.height = "100%";
+          }
+        });
+
+        myDropzone.on("success", function(file) {
+            var form = document.getElementById("upload-image");
+            form.action = "/result/"
+            form.submit();
+          });
+      }
+    };
+  </script>
+{%endblock main_content%}
