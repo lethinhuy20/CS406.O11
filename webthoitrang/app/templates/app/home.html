@@ -40,13 +40,15 @@
 <div class="frame-3">
   <div class="frame-4">
     <div class="text-wrapper-2">Search results</div>
-    <img class="line" src="{% static 'img/line-1.svg' %}" />
+    <img class="line" src="{% static 'img/line-1.svg' %}" alt="line" />
   </div>
   <div class="frame-5">
-    {% if query_image %} {% for i in "123456789" %}
+    {% if query_image %} {% for url in result_urls %}
     <div class="frame-6">
       <div class="media-image-wrapper">
-        <img class="img" src="{%static 'img/products/somitrang.jpeg' %}" />
+        {% with 'img/'|add:url as image_static %}
+        <img class="img" src="{%static image_static %}" alt="result image" />
+        {% endwith %}
       </div>
       <div class="text-wrapper-3">Brand:</div>
       <div class="text-wrapper-3">Material:</div>
