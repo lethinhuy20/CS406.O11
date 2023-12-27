@@ -1,24 +1,38 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from .models import UploadFile
+from django.http import JsonResponse
+from .models import UploadImage
+
+
 # Create your views here.
 def home(request):
-    #return render(request,'app/home.html')
-    return render(request,'for20/home.html')
-def result(request):
-    context = None
-    if request.method == 'POST':
-        my_file = request.FILES.get('file')
-        print(1111111111)
-        context = {'search_image': my_file}
-    return render(request,'for20/index.html', context)
+    return render(request, "app/home.html")
+
 
 def file_upload_view(request):
-    if request.method == 'POST':
-        my_file = request.FILES.get('file')
-        uploaded_file = UploadFile.objects.create(upload=my_file)
-        url = 'http://127.0.0.1:8000/upload/'+uploaded_file.upload.name.split('/')[-1]
-        context = {'search_image': url}
-        print(111111111111111)
-        return render(request, 'for20/index.html', context)
-    return JsonResponse({'post:':'false'})
+    if request.method == "POST":
+        uploaded_image = request.FILES.get("file")
+        query_image = UploadImage.objects.create(upload=uploaded_image)
+        return JsonResponse({"url": "/result/{}".format(query_image.id)})
+    return JsonResponse({"post": "false"})
+
+
+def result(request, pk):
+    query_image = UploadImage.objects.get(id=pk)
+    ###PERFORM IMAGE SEARCH HERE###
+    # Your code here...
+    # result_urls = [...] # The result images' urls should be placed in here
+    # Example:
+    result_urls = [
+        "products/somitrang.jpeg",
+        "products/somitrang.jpeg",
+        "products/somitrang.jpeg",
+        "products/somitrang.jpeg",
+        "products/somitrang.jpeg",
+    ]
+    # Note that the urls should be exact the ones that are in your .csv file
+    ###############################
+    return render(
+        request,
+        "app/home.html",
+        {"query_image": query_image, "result_urls": result_urls},
+    )

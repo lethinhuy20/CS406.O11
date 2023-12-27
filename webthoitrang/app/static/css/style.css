@@ -33,7 +33,7 @@
   align-self: stretch;
 }
 
-.desktop .group {
+/* .desktop .group {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +42,19 @@
   object-fit: cover;
   aspect-ratio: 5/6;
   background-color: #e6f7ff;
+  max-height: 100%;
+} */
+
+.desktop .group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  align-self: stretch;
+  object-fit: contain;
+  aspect-ratio: 5/6;
+  background-color: #e6f7ff;
+  max-height: 100%;
 }
 
 .desktop .media-image {
@@ -178,8 +191,9 @@
 
 .desktop .img {
   position: absolute;
-  width: 56px;
-  height: 56px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .desktop .text-wrapper-3 {
@@ -197,26 +211,31 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
-.dz{
+
+/* .dz {
   border: dashed;
-  border-color:#23a6f0 !important;
+  border-color: #23a6f0 !important;
+  width: 100%;
+  height: 100%;
+} */
+
+.dz {
+  border: dashed;
+  border-color: #23a6f0 !important;
+  align-self: stretch;
+  flex: auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 47px;
-  padding: 31px;
-  flex: 1 1 400px;
-  position: relative;
-  align-self: stretch;
 }
-.dz:hover{
+.dz:hover {
   background-color: #e6f7ff;
 }
-.dz-message{
+
+.dz-message {
   position: relative;
   align-self: stretch;
-  height: 26px;
-  margin-top: -1px;
+  flex: initial;
+  height: fit-content;
   font-family: "Montserrat", Helvetica;
   font-weight: 700;
   color: #000000;
@@ -224,4 +243,31 @@
   letter-spacing: 0.2px;
   line-height: 22px;
   white-space: nowrap;
+}
+
+.dropzone .dz-preview .dz-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.dropzone .dz-preview .dz-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+/* .query-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+} */
+
+.query-image {
+  align-self: center;
+  max-width: 100%;
+  max-height: calc(100% - 58px);
+  flex: initial;
+  object-fit: contain;
+  margin: auto;
 }
