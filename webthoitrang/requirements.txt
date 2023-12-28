@@ -1,0 +1,8 @@
+Django==5.0
+fashion-clip
+torch 
+torchvision 
+faiss-cpu
+Pillow 
+djangorestframework
+numpy
