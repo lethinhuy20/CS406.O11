@@ -6,3 +6,4 @@ faiss-cpu
 Pillow 
 djangorestframework
 numpy
+pandas

@@ -39,6 +39,7 @@
 ## Cách cài đặt 
 ### Setup
 - Cài đặt Python version `>= 3.10`
+- Tải indexes, train_set.zip, test_set.zip 
 - Vào thư mục root của Django project 
     ```
     cd webthoitrang/
