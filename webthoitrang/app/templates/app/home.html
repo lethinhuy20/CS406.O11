@@ -48,15 +48,13 @@
     </div>
     <div class="frame-5">
       {% if query_image %} 
-        {% for url in result_urls %}
+        {% for url, category, gender in results %}
         <div class="frame-6">
           <div class="media-image-wrapper">
-            {% with 'img/'|add:url as image_static %}
-            <img class="img" src="{%static image_static %}" alt="result image" />
-            {% endwith %}
+            <img class="img" src="{{ url }}" alt="result image" />
           </div>
-          <div class="text-wrapper-3">Brand:</div>
-          <div class="text-wrapper-3">Material:</div>
+          <div class="text-wrapper-3">Gender: {{ gender }}</div>
+          <div class="text-wrapper-3">Category: {{ category }}</div>
         </div>
         {% endfor %} 
       {% endif %}
