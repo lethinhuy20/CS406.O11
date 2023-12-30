@@ -35,8 +35,12 @@
   </head>
   <body>
     <div class="desktop">
-      <img class="navbar" src="{% static 'img/navbar.png' %}" />
-      <div class="frame">
+      <div id="navbar">
+        <a href="/">
+          <img src="{% static 'img/navbar.png' %}" alt="navbar image version"/>
+        </a>
+      </div>
+      <div id="content">
         {% block main_content %}{% endblock main_content %}
       </div>
     </div>
