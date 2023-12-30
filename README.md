@@ -12,20 +12,23 @@
 |4|[Le Thi Nhu Y](https://github.com/lethinhuy20)|21522818|
 
 ## Mô tả đồ án 
+Đồ án hướng tới việc tạo một visual search engine trên web app để giúp gia tăng trải nghiệm người dùng trên các trang web thương mại điện tử về thời trang.
 
+### Tech Stack
+- Django, SQLite, FAISS, PyTorch
 
 ## Repo tree
 ```bash
 .
 ├── webthoitrang/ (tạm gọi là root của Django Project này)
 │   ├── app/
-│   ├──   ├── faiss_retrieval/
-│   ├──   ├── static/
-│   ├──   ├── utils/
-│   ├──   ├── templates/
-│   ├──   └── *.py files 
+│   ├──   ├── faiss_retrieval/ : Module FAISS
+│   ├──   ├── static/ : Các file tĩnh (CSS, images, JavaScript)
+│   ├──   ├── utils/ : Module chứa các helper functions
+│   ├──   ├── templates/ : Chứa các templates cho app
+│   ├──   └── *.py files : Các file xử lý 
 │   ├── webthoitrang/
-│   ├── media/
+│   ├── media/ 
 │   ├──   ├── train/
 │   ├──   ├── test/
 │   ├──   └── uploaded-images/
@@ -36,10 +39,25 @@
  ```
 
 
-## Cách cài đặt 
-### Setup
-- Cài đặt Python version `>= 3.10`
-- Tải indexes, train_set.zip, test_set.zip 
+## **Cách cài đặt**
+### **Chuẩn bị** 
+    - Cài đặt Git Bash 
+    - Cài đặt Python version `>= 3.10`
+    - Cài đặt PIP version `>= 21.2.x`
+    - Bật repo `CS406.O11` và pwd trên terminal của Git Bash đang ở tại đây
+### **Cách 1**: Dùng SHELL scripts trên Git Bash
+- Không reset database 
+```
+sh ./script_name.sh
+```
+- Reset Database:
+
+```
+sh ./script_name.sh reset-db
+```
+
+### **Cách 2**: Chạy từng bước
+#### Setup
 - Vào thư mục root của Django project 
     ```
     cd webthoitrang/
@@ -55,18 +73,34 @@
     ```
     pip install -r requirements.txt
     ```
-- Unzip `train_set.zip` và `test_set.zip` trong thư mục `media`
+- Download các file indexes 
     ```
-    cd media/
-    unzip -q train_set.zip
-    unzip -q test_set.zip
+    gdown 1Xfr6oqZHQrpFOhEqLkt1fuIbSAuxsKgq 
+    mv fclip_B32* app/faiss_retrieval/indexes
     ```
-### Thực thi server 
-- Chạy server (tại thư mục root của Django project này)
+- Download và unzip `train_set.zip` và `test_set.zip` trong thư mục `media`
+    ```
+    gdown 1y5xndjRW3iVxL254jYPd6Vm86KuJQ75S
+    gdown 1fix1hdVz3cAKv9vXjS1iJl6b6k1f-gjq
+    mv *_set.zip media/
+    unzip -q media/train_set.zip
+    unzip -q media/test_set.zip
+    ```
+#### Thực thi server 
+- Chuẩn bị database (không cần thực hiện hoặc chỉ cần thực hiện lần đầu tiên):
     ```
     python manage.py makemigrations
     python manage.py migrate
-    python manage.py runserver 
+    sh reset_db.sh
     ```
+- Chạy server (tại thư mục root của Django project này)
+    ```
+    python manage.py runserver --noreload
+    ```
+    **Note**: Lần đầu tiên chạy server thì sẽ tốn thời gian từ 2-1 tiếng tùy theo tốc độ mạng để khởi tạo model. Các lần tiếp theo thì không.
 
+### **Tạo account admin**
 
+    python manage.py createsuperuser
+
+    Và sau đó tạo account 

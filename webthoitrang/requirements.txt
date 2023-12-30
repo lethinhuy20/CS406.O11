@@ -3,7 +3,7 @@ fashion-clip
 torch 
 torchvision 
 faiss-cpu
-Pillow 
 djangorestframework
 numpy
 pandas
+gdown
