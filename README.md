@@ -15,7 +15,7 @@
 Đồ án hướng tới việc tạo một visual search engine trên web app để giúp gia tăng trải nghiệm người dùng trên các trang web thương mại điện tử về thời trang.
 
 ### Tech Stack
-- Django, SQLite, FAISS, PyTorch
+- Django, SQLite, FAISaS, PyTorch
 
 ### System Flow 
 ![alt](https://i.ibb.co/X4KT6R7/System-Design-System-Flow.png)
