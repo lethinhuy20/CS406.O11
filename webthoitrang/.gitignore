@@ -8,3 +8,4 @@ venv
 *.zip
 *.bin
 LOG*
+db.sqlite3
