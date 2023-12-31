@@ -11,13 +11,13 @@ source venv/Scripts/activate
 pip install -r requirements.txt
 
 # Check for fclip file and download if missing
-if [[ ! -f app/faiss_retrieval/indexes/fclip_B32* ]]; then
+if [[ ! -f app/faiss_retrieval/indexes/fclip_B32_full_index.bin ]]; then
   gdown 1Xfr6oqZHQrpFOhEqLkt1fuIbSAuxsKgq  # Download .bin
   mv fclip_B32* app/faiss_retrieval/indexes
 fi
 
 # Check for zip files and download if missing
-if [[ ! -f media/train_set.zip || ! -f media/test_set.zip ]]; then
+if [[ ! -d media/train || ! -d media/test ]] && [[ ! -f media/train_set.zip || ! -f media/test_set.zip ]]; then
   gdown 1y5xndjRW3iVxL254jYPd6Vm86KuJQ75S
   gdown 1fix1hdVz3cAKv9vXjS1iJl6b6k1f-gjq
   mv *.zip media/
