@@ -15,8 +15,10 @@
 Đồ án hướng tới việc tạo một visual search engine trên web app để giúp gia tăng trải nghiệm người dùng trên các trang web thương mại điện tử về thời trang.
 
 ### Tech Stack
-- Django, SQLite, FAISS, PyTorch
+- Django, SQLite, FAISaS, PyTorch
 
+### System Flow 
+![alt](https://i.ibb.co/X4KT6R7/System-Design-System-Flow.png)
 ## Repo tree
 ```bash
 .
@@ -40,6 +42,7 @@
 
 
 ## **Cách cài đặt**
+**Important Note**: Lần đầu tiên chạy server thì sẽ tốn thời gian từ 2 phút đến 2 tiếng tùy theo tốc độ mạng để khởi tạo môi trường, install các modules cần thiết. Các lần tiếp theo thì không, vui lòng kiên nhẫn.
 ### **Chuẩn bị** 
     - Cài đặt Git Bash 
     - Cài đặt Python version `>= 3.10`
@@ -83,8 +86,8 @@ sh ./run.sh reset-db
     gdown 1y5xndjRW3iVxL254jYPd6Vm86KuJQ75S
     gdown 1fix1hdVz3cAKv9vXjS1iJl6b6k1f-gjq
     mv *_set.zip media/
-    unzip -q media/train_set.zip
-    unzip -q media/test_set.zip
+    unzip -q media/train_set.zip media/
+    unzip -q media/test_set.zip media/
     ```
 #### Thực thi server 
 - Chuẩn bị database (không cần thực hiện hoặc chỉ cần thực hiện lần đầu tiên):
@@ -97,7 +100,6 @@ sh ./run.sh reset-db
     ```
     python manage.py runserver --noreload
     ```
-    **Note**: Lần đầu tiên chạy server thì sẽ tốn thời gian từ 2-1 tiếng tùy theo tốc độ mạng để khởi tạo model. Các lần tiếp theo thì không.
 
 ### **Tạo account admin**
 
