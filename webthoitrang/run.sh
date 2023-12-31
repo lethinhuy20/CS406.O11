@@ -23,12 +23,18 @@ if [[ ! -f media/train_set.zip || ! -f media/test_set.zip ]]; then
   mv *.zip media/
 fi
 
-# Unzip zip files (only if they were downloaded)
-if [[ -f media/train_set.zip ]]; then
-  unzip -q media/train_set.zip
+
+# Check for existence of extracted folders and zip files
+if [[ -d media/train ]] && [[ -f media/train_set.zip ]]; then
+  echo "train_set.zip already extracted to media/train"
+elif [[ -f media/train_set.zip ]]; then
+  unzip -q media/train_set.zip -d media  # Unzip to media/
 fi
-if [[ -f media/test_set.zip ]]; then
-  unzip -q media/test_set.zip
+
+if [[ -d media/test ]] && [[ -f media/test_set.zip ]]; then
+  echo "test_set.zip already extracted to media/test"
+elif [[ -f media/test_set.zip ]]; then
+  unzip -q media/test_set.zip -d media  # Unzip to media/
 fi
 
 # Run Django commands
@@ -36,6 +42,6 @@ if [[ "$1" == "reset-db" ]]; then
   python prep_db.py
   python manage.py makemigrations
   sh reset_db.sh
-else
-    python manage.py runserver --noreload
 fi 
+
+python manage.py runserver --noreload
