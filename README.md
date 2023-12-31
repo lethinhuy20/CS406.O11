@@ -51,12 +51,12 @@
 ### **Cách 1**: Dùng SHELL scripts trên Git Bash
 - Không reset database 
 ```
-sh ./run.sh
+sh ./webthoitrang/run.sh
 ```
 - Reset Database:
 
 ```
-sh ./run.sh reset-db
+sh ./webthoitrang/run.sh reset-db
 ```
 
 ### **Cách 2**: Chạy từng bước
